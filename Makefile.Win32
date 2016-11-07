@@ -1,0 +1,26 @@
+CC = cl
+OPENSSL_DIR = .\external\openssl
+PTHREADS_DIR = .\external\pthreads-w32-2-9-1-release
+PCRE_DIR = .\external\pcre-win32 
+CURL_DIR = .\external\curl
+OPENCL_DIR = .\external\opencl
+OPENCL_INCLUDE = /I$(OPENCL_DIR)\include
+OPENCL_LIBS = $(OPENCL_DIR)\lib\Win32\OpenCL.lib
+CURL_INCLUDE = /I$(CURL_DIR)\include /DCURL_STATICLIB
+CURL_LIBS = $(CURL_DIR)\builds\libcurl-vc-x86-release-static-sspi-winssl\lib\libcurl_a.lib 
+CFLAGS_BASE = /D_WIN32 /DPTW32_STATIC_LIB /DPCRE_STATIC /I$(OPENSSL_DIR)\ /I$(PTHREADS_DIR) /I$(PCRE_DIR) /Ox /Zi
+CFLAGS = $(CFLAGS_BASE) /GL
+
+LIBS = $(OPENSSL_DIR)\libeay32.lib $(PTHREADS_DIR)\pthreadVC2.lib $(PCRE_DIR)\lib\pcre.lib ws2_32.lib user32.lib advapi32.lib gdi32.lib /LTCG /DEBUG 
+OBJS = keyconv.obj pattern.obj util.obj winglue.obj
+
+all: keyconv.exe
+
+keyconv.exe: keyconv.obj util.obj winglue.obj
+	link /nologo /out:$@ $** $(LIBS)
+
+.c.obj:
+	@$(CC) /nologo $(CFLAGS) /c /Tp$< /Fo$@
+
+clean:
+	del keyconv.exe $(OBJS)
