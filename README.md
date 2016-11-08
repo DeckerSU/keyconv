@@ -26,7 +26,7 @@ And result is the same:
 
 Also, since i use Windows based OS i make compile.cmd batch file to easy build project under MSVC. Win32 binary is inlcluded. For all who wants build it under other OS, clone the original repository from [here](https://github.com/samr7/vanitygen), change the keyconv.c on modified from this git and build.
 
-For succeful build under Windows you should put all needed dependencies in external folder:
+For successful build under Windows you should put all needed dependencies in external folder:
 
 - openssl
 - pcre-win32
