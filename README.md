@@ -36,4 +36,5 @@ For successful build under Windows you should put all needed dependencies in ext
 
 - [samr7/vanitygen](https://github.com/samr7/vanitygen) - original sources.
 - BitCoin Donate: 1DeckerNWuk9s4MnCvtxCEh4osCgNotH9w
+-  Komodo Donate: RDecker69MM5dhDBosUXPNTzfoGqxPQqHu
 
